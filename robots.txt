@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /internal/
+Allow: /
+
+# Generated to ensure search engines do not crawl service sections.
