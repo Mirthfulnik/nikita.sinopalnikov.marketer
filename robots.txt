@@ -1,6 +1,9 @@
+# robots.txt for Nikita Sinopalnikov marketing site
+# Allows search engines to crawl public pages while blocking service sections.
+
 User-agent: *
-Disallow: /admin/
-Disallow: /internal/
 Allow: /
 
-# Generated to ensure search engines do not crawl service sections.
+# Service and technical sections
+Disallow: /admin/
+Disallow: /internal/
