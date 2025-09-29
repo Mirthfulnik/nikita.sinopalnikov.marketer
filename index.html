@@ -42,6 +42,80 @@
     <link rel="stylesheet" crossorigin href="./assets/index-MkizUu3y.css">
 
     <style>
+       .seo-fallback__intro {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        align-items: flex-start;
+      }
+
+      .seo-fallback__title-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .seo-fallback__portrait {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        color: rgba(36, 18, 50, 0.88);
+      }
+
+      .seo-fallback__portrait img {
+        width: 100%;
+        max-width: 320px;
+        border-radius: 24px;
+        object-fit: cover;
+      }
+
+      .seo-fallback__nav {
+        margin-top: 24px;
+      }
+
+      .seo-fallback__nav-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 20px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .seo-fallback__nav a {
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        color: #432568;
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 999px;
+        border: 1px solid rgba(67, 37, 104, 0.22);
+        transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+      }
+
+      .seo-fallback__nav a:focus,
+      .seo-fallback__nav a:hover {
+        background: rgba(67, 37, 104, 0.08);
+        border-color: rgba(67, 37, 104, 0.35);
+        color: #2c1b3d;
+      }
+
+      @media (min-width: 768px) {
+        .seo-fallback__intro {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        .seo-fallback__portrait {
+          align-items: flex-end;
+          text-align: right;
+        }
+      }
+
       .cookie-banner {
         position: fixed;
         left: 50%;
@@ -258,22 +332,62 @@
   </head>
   <body>
     <!-- Yandex.Metrika noscript -->
-    <noscript><div><img src="https://mc.yandex.ru/watch/104136933" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <noscript>
+      <div>
+        <img
+          src="https://mc.yandex.ru/watch/104136933"
+          style="position:absolute; left:-9999px;"
+          alt="Счетчик статистики Яндекс.Метрики"
+        />
+      </div>
+    </noscript>
     
     <div id="root">
       <header class="seo-fallback__header">
-        <h1>Никита Синопальников</h1>
-        <p class="subtitle">Коммуникационный маркетолог</p>
+      <div class="seo-fallback__intro">
+          <div class="seo-fallback__title-group">
+            <h1>Никита Синопальников</h1>
+            <p class="subtitle">Коммуникационный маркетолог</p>
+          </div>
+          <figure class="seo-fallback__portrait">
+            <img
+              src="./assets/photo_1757746990632-CPnHYGCg.webp"
+              alt="Никита Синопальников улыбается в камеру"
+              width="320"
+              height="320"
+              loading="lazy"
+            />
+            <figcaption>Помогаю брендам выстраивать диалог с аудиторией</figcaption>
+          </figure>
+        </div>
+        <nav class="seo-fallback__nav" aria-label="Основная навигация">
+          <ul class="seo-fallback__nav-list">
+            <li><a href="#results" data-section-link="results">Результаты</a></li>
+            <li><a href="#trust" data-section-link="trust">Экспертиза</a></li>
+            <li><a href="#cases" data-section-link="cases">Кейсы</a></li>
+            <li><a href="#services" data-section-link="services">Услуги</a></li>
+          </ul>
+        </nav> 
       </header>
 
       <main class="seo-fallback__main">
-        <section id="results" class="seo-fallback__section">
-          <h2>Результаты моих клиентов</h2>
+        <section
+          id="results"
+          class="seo-fallback__section"
+          data-section-target="results"
+          aria-labelledby="results-heading"
+        >
+          <h2 id="results-heading">Результаты моих клиентов</h2>
           <div class="results-grid" aria-hidden="true"></div>
         </section>
 
-        <section id="trust" class="seo-fallback__section">
-          <h2>Почему мне доверяют</h2>
+        <section
+          id="trust"
+          class="seo-fallback__section"
+          data-section-target="trust"
+          aria-labelledby="trust-heading"
+        >
+          <h2 id="trust-heading">Почему мне доверяют</h2>
           <div class="experience-items">
             <div class="experience-item">
               <h3>Директор по маркетингу студии Chemodanov Production</h3>
@@ -296,8 +410,13 @@
           </div>
         </section>
 
-        <section id="cases" class="seo-fallback__section">
-          <h2>Кейсы</h2>
+        <section
+          id="cases"
+          class="seo-fallback__section"
+          data-section-target="cases"
+          aria-labelledby="cases-heading"
+        >
+          <h2 id="cases-heading">Кейсы</h2>
           <div class="cases-grid">
             <div class="case-item">
               <h3>Увеличение среднего чека</h3>
@@ -311,8 +430,13 @@
           </div>
         </section>
 
-        <section id="services" class="seo-fallback__section">
-          <h2>Форматы работы</h2>
+        <section
+          id="services"
+          class="seo-fallback__section"
+          data-section-target="services"
+          aria-labelledby="services-heading"
+        >
+          <h2 id="services-heading">Форматы работы</h2>
           <div class="services-grid">
             <div class="service-item">
               <h3>Консультация</h3>
@@ -447,7 +571,214 @@
     </div>
        <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
     <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
+    
+<script>
+      (function () {
+        const navLinks = Array.from(document.querySelectorAll('[data-section-link]'));
+        const sectionNodes = Array.from(document.querySelectorAll('[data-section-target]'));
 
+        if (!navLinks.length || !sectionNodes.length) {
+          return;
+        }
+
+        const sectionIds = new Set(
+          sectionNodes
+            .map((section) => section.dataset.sectionTarget || section.id)
+            .filter(Boolean)
+        );
+
+        if (!sectionIds.size) {
+          return;
+        }
+
+        const sectionPaths = new Map();
+        const pathToSection = new Map();
+
+        function updateActiveLink(activeSection) {
+          navLinks.forEach((link) => {
+            const sectionId = link.dataset.sectionLink;
+            if (!sectionId || !sectionIds.has(sectionId)) {
+              return;
+            }
+
+            if (sectionId === activeSection) {
+              link.setAttribute('aria-current', 'page');
+            } else {
+              link.removeAttribute('aria-current');
+            }
+          });
+        }
+
+        function normalizePath(path) {
+          if (!path) {
+            return '/';
+          }
+
+          let normalized = path;
+
+          if (typeof normalized === 'string') {
+            normalized = normalized.replace(/index\.html?$/i, '');
+          }
+
+          const queryIndex = normalized.indexOf('?');
+          if (queryIndex !== -1) {
+            normalized = normalized.slice(0, queryIndex);
+          }
+
+          const hashIndex = normalized.indexOf('#');
+          if (hashIndex !== -1) {
+            normalized = normalized.slice(0, hashIndex);
+          }
+
+          normalized = normalized.replace(/\/+$/g, '/');
+          normalized = normalized.replace(/\/+/g, '/');
+
+          if (!normalized.startsWith('/')) {
+            normalized = `/${normalized}`;
+          }
+
+          if (normalized.length > 1 && !normalized.endsWith('/')) {
+            normalized = `${normalized}/`;
+          }
+
+          return normalized || '/';
+        }
+
+        function determineBasePath() {
+          const canonicalLink = document.querySelector('link[rel="canonical"]');
+          if (canonicalLink && canonicalLink.href) {
+            try {
+              const canonicalUrl = new URL(canonicalLink.href);
+              if (!window.location.host || canonicalUrl.host === window.location.host) {
+                return canonicalUrl.pathname || '/';
+              }
+            } catch (error) {
+              console.warn('Не удалось разобрать canonical URL:', error);
+            }
+          }
+
+          return window.location.pathname.replace(/index\.html?$/i, '');
+        }
+
+        const basePath = normalizePath(determineBasePath());
+
+        function buildSectionPath(sectionId) {
+          if (!sectionId) {
+            return basePath;
+          }
+
+          const sanitizedId = sectionId.replace(/^\/+|\/+$/g, '');
+          return normalizePath(`${basePath}${sanitizedId}`);
+        }
+
+        function scrollToSection(sectionId) {
+          const prefersReducedMotion = window.matchMedia(
+            '(prefers-reduced-motion: reduce)'
+          ).matches;
+
+          const target =
+            document.querySelector(`[data-section-target="${sectionId}"]`)
+            || document.getElementById(sectionId);
+
+          if (!target) {
+            return;
+          }
+
+          requestAnimationFrame(() => {
+            target.scrollIntoView({
+              behavior: prefersReducedMotion ? 'auto' : 'smooth',
+              block: 'start',
+            });
+          });
+        }
+
+        function navigateToSection(sectionId, { replace = false, skipHistory = false } = {}) {
+          if (!sectionId || !sectionIds.has(sectionId)) {
+            return;
+          }
+
+          const targetPath = sectionPaths.get(sectionId) || basePath;
+
+          if (!skipHistory) {
+            if (replace) {
+              history.replaceState({ sectionId }, '', targetPath);
+            } else {
+              history.pushState({ sectionId }, '', targetPath);
+            }
+          }
+
+          scrollToSection(sectionId);
+          updateActiveLink(sectionId);
+        }
+
+        function extractSectionFromPath(pathname) {
+          const normalizedPath = normalizePath(pathname);
+
+          if (normalizedPath === basePath) {
+            return null;
+          }
+
+          if (pathToSection.has(normalizedPath)) {
+            return pathToSection.get(normalizedPath) || null;
+          }
+
+          if (!normalizedPath.startsWith(basePath)) {
+            return null;
+          }
+
+          const remainder = normalizedPath.slice(basePath.length);
+          const [candidate] = remainder.split('/').filter(Boolean);
+
+          if (candidate && sectionIds.has(candidate)) {
+            return candidate;
+          }
+
+          return null;
+        }
+
+        navLinks.forEach((link) => {
+          const sectionId = link.dataset.sectionLink;
+
+          if (!sectionId || !sectionIds.has(sectionId)) {
+            return;
+          }
+
+          const sectionPath = buildSectionPath(sectionId);
+          sectionPaths.set(sectionId, sectionPath);
+          pathToSection.set(sectionPath, sectionId);
+
+          link.setAttribute('href', sectionPath);
+          link.setAttribute('role', 'link');
+
+          link.addEventListener('click', (event) => {
+            event.preventDefault();
+            navigateToSection(sectionId);
+          });
+        });
+
+        const initialSection = extractSectionFromPath(window.location.pathname);
+
+        if (initialSection) {
+          navigateToSection(initialSection, { replace: true, skipHistory: true });
+        } else if (normalizePath(window.location.pathname) !== basePath) {
+          history.replaceState({}, '', basePath);
+          updateActiveLink(null);
+        }
+
+        window.addEventListener('popstate', () => {
+          const sectionId = extractSectionFromPath(window.location.pathname);
+
+          if (sectionId) {
+            navigateToSection(sectionId, { replace: true, skipHistory: true });
+          } else {
+            history.replaceState({}, '', basePath);
+            window.scrollTo({ top: 0, behavior: 'auto' });
+            updateActiveLink(null);
+          }
+        });
+      })();
+    </script>
+    
     <script>
       (function () {
         const banner = document.getElementById("cookie-banner");
