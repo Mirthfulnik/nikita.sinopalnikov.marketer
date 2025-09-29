@@ -113,6 +113,20 @@
         .cookie-banner__text {
           max-width: 380px;
         }
+        .cookie-banner__button {
+          padding: 14px 32px;
+          min-width: 184px;
+        }
+        .privacy-link-wrapper {
+          margin-top: 24px;
+        }
+      }
+
+      .privacy-link-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 20px;
       }
 
       .privacy-policy-link {
@@ -124,6 +138,10 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
+        text-align: center;
+        background: none;
+        border: none;
+        padding: 0;
       }
 
       .privacy-modal {
@@ -147,9 +165,11 @@
         background: #fff;
         border-radius: 24px;
         padding: 32px;
-        max-width: min(840px, calc(100% - 32px));
+        width: min(840px, calc(100% - 32px));
+        max-width: 100%;
         max-height: calc(100vh - 120px);
         overflow-y: auto;
+        overflow-x: hidden;
         font-family: "Inter", sans-serif;
         box-shadow: 0 32px 80px rgba(24, 8, 56, 0.25);
       }
@@ -166,6 +186,8 @@
         line-height: 1.6;
         color: #2c1b3d;
         white-space: pre-line;
+        word-break: break-word;
+        overflow-wrap: anywhere;
       }
 
       .privacy-modal__close {
@@ -205,6 +227,7 @@
         .privacy-modal__content {
           padding: 24px;
           border-radius: 20px;
+          width: calc(100% - 24px);
         }
         .privacy-modal__title {
           font-size: 20px;
@@ -224,8 +247,8 @@
           Мой сайт становится лучше благодаря «печенькам». Остаётесь со мной — значит, вы ими делитесь. Подробности — в <button type="button" class="cookie-banner__link" data-privacy-trigger>Политике «печенек»</button>. Спасибо за угощение!
         </p>
         <div class="cookie-banner__actions">
-          <button class="cookie-banner__button cookie-banner__button--primary" type="button" data-cookie-action="accept">Ок, делюсь</button>
-          <button class="cookie-banner__button cookie-banner__button--secondary" type="button" data-cookie-action="decline">Нет, не делюсь</button>
+          <button class="cookie-banner__button cookie-banner__button--primary" type="button" data-cookie-action="accept">Да, угощайся</button>
+          <button class="cookie-banner__button cookie-banner__button--secondary" type="button" data-cookie-action="decline">Оставлю себе</button>
         </div>
       </div>
     </div>
@@ -359,9 +382,16 @@
         });
 
         const modal = document.getElementById("privacy-modal");
+        let originalBodyPaddingRight = "";
 
         function openModal() {
           if (!modal) return;
+          originalBodyPaddingRight = document.body.style.paddingRight;
+          const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+          if (scrollBarWidth > 0) {
+            const computedPadding = parseFloat(window.getComputedStyle(document.body).paddingRight) || 0;
+            document.body.style.paddingRight = `${computedPadding + scrollBarWidth}px`;
+          }
           modal.style.display = "flex";
           document.body.style.overflow = "hidden";
         }
@@ -370,6 +400,8 @@
           if (!modal) return;
           modal.style.display = "none";
           document.body.style.overflow = "";
+          document.body.style.paddingRight = originalBodyPaddingRight;
+          originalBodyPaddingRight = "";
         }
 
         modal?.addEventListener("click", (event) => {
@@ -381,18 +413,28 @@
 
         function appendPrivacyLink() {
           const footer = document.querySelector("footer");
-          if (!footer || footer.dataset.privacyReady) {
+          if (!footer) {
             return;
           }
+
+          const host = footer.querySelector(".max-w-6xl") || footer;
+          if (host.querySelector(".privacy-link-wrapper")) {
+            return;
+          }
+
+          const wrapper = document.createElement("div");
+          wrapper.className = "privacy-link-wrapper";
 
           const link = document.createElement("button");
           link.type = "button";
           link.className = "privacy-policy-link";
           link.textContent = "Политика конфиденциальности";
-          link.addEventListener("click", openModal);
+          link.setAttribute("data-privacy-trigger", "");
 
-          footer.appendChild(link);
-          footer.dataset.privacyReady = "true";
+          wrapper.appendChild(link);
+          host.appendChild(wrapper);
+
+          bindPrivacyTriggers(wrapper);
         }
 
         function bindPrivacyTriggers(root = document) {
