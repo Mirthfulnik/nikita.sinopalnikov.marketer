@@ -7,3 +7,5 @@ Allow: /
 # Service and technical sections
 Disallow: /admin/
 Disallow: /internal/
+
+Sitemap: https://mirthfulnik.github.io/nikita.sinopalnikov.marketer/sitemap.xml
