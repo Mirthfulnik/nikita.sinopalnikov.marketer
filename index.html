@@ -26,6 +26,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     
+    <script>
+      document.documentElement.classList.add('js-enabled');
+    </script>
+    
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
         (function(m,e,t,r,i,k,a){
@@ -42,7 +46,11 @@
     <link rel="stylesheet" crossorigin href="./assets/index-MkizUu3y.css">
 
     <style>
-       .seo-fallback__intro {
+      html.js-enabled [data-seo-fallback] {
+        display: none;
+      }
+
+      .seo-fallback__intro {
         display: flex;
         flex-direction: column;
         gap: 24px;
@@ -342,9 +350,11 @@
       </div>
     </noscript>
     
-    <div id="root">
+    <div id="root"></div>
+
+    <div id="seo-fallback" data-seo-fallback>
       <header class="seo-fallback__header">
-      <div class="seo-fallback__intro">
+     <div class="seo-fallback__intro">
           <div class="seo-fallback__title-group">
             <h1>Никита Синопальников</h1>
             <p class="subtitle">Коммуникационный маркетолог</p>
@@ -367,7 +377,7 @@
             <li><a href="#cases" data-section-link="cases">Кейсы</a></li>
             <li><a href="#services" data-section-link="services">Услуги</a></li>
           </ul>
-        </nav> 
+        </nav>
       </header>
 
       <main class="seo-fallback__main">
