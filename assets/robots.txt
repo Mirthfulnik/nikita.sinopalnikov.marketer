@@ -1,11 +1,7 @@
 # robots.txt for Nikita Sinopalnikov marketing site
-# Allows search engines to crawl public pages while blocking service sections.
+# Allows search engines to crawl all public content.
 
 User-agent: *
 Allow: /
-
-# Service and technical sections
-Disallow: /admin/
-Disallow: /internal/
 
 Sitemap: https://mirthfulnik.github.io/nikita.sinopalnikov.marketer/sitemap.xml
