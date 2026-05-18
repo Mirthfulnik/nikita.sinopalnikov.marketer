@@ -11797,7 +11797,7 @@ function vC({
         })]
       }), c.jsx("p", {
         className: "text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed", "data-testid": "text-hero-description",
-        children: "Здравствуйте! Меня зовут Никита Синопальников, и я коммуникационный маркетолог. Я появляюсь в момент, когда платная реклама не приносит результаты."
+        children: "Появляюсь в момент, когда платная реклама не приносит результаты."
       }), c.jsxs(ce, {
         size: "lg", className: "text-lg px-8 py-6 h-auto rounded-lg hover-elevate active-elevate-2 shimmer-effect", onClick: ()=>window.open("https://t.me/nikitasinopalnikov",
         "_blank", "noopener,noreferrer"), "data-testid": "button-telegram-contact", children: [c.jsx(zs, {
